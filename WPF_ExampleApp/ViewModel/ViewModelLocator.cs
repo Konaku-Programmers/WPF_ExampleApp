@@ -41,6 +41,7 @@ namespace WPF_ExampleApp.ViewModel
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<PageOneViewModel>();
+            SimpleIoc.Default.Register<PageTwoViewModel>();
         }
 
         public MainViewModel Main
@@ -56,6 +57,14 @@ namespace WPF_ExampleApp.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<PageOneViewModel>();
+            }
+        }
+
+        public PageTwoViewModel PageTwo
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<PageTwoViewModel>();
             }
         }
     }

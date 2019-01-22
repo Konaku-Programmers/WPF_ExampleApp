@@ -77,14 +77,19 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DesignTimeViewModels\MainViewModelDesign.cs" />
+    <Compile Include="DesignTimeViewModels\PageTwoViewModelDesign.cs" />
     <Compile Include="DesignTimeViewModels\PageOneViewModelDesign.cs" />
     <Compile Include="Icons\Graduate.xaml.cs">
       <DependentUpon>Graduate.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\MeowModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\PageTwoViewModel.cs" />
     <Compile Include="ViewModel\PageOneViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="Views\PageTwoView.xaml.cs">
+      <DependentUpon>PageTwoView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PageOneView.xaml.cs">
       <DependentUpon>PageOneView.xaml</DependentUpon>
     </Compile>
@@ -104,6 +109,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\PageTwoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\PageOneView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

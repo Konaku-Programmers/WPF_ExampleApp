@@ -18,5 +18,8 @@
         <TabItem Header="Page One">
             <views:PageOneView/>
         </TabItem>
+        <TabItem Header="Page Two">
+            <views:PageTwoView/>
+        </TabItem>
     </TabControl>
 </Controls:MetroWindow>

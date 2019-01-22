@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="WPF_ExampleApp.Views.PageOneView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:design="clr-namespace:WPF_ExampleApp.DesignTimeViewModels"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:WPF_ExampleApp.Views"
+        xmlns:icons="clr-namespace:WPF_ExampleApp.Icons"
+        mc:Ignorable="d" 
+        Dialog:DialogParticipation.Register="{Binding}"
+        DataContext="{Binding PageOne, Source={StaticResource Locator}}"
+        d:DataContext="{d:DesignInstance {x:Type design:PageOneViewModelDesign}, IsDesignTimeCreatable=True}"
+        d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Column="0"
+                      Grid.Row="0"
+                      Grid.RowSpan="2"
+                      Header="Data grid of stuff"
+                      Margin="5">
+            <DataGrid>
+
+            </DataGrid>
+        </GroupBox>
+        <GroupBox Grid.Column="1"
+                      Grid.Row="0"
+                      Header="Meow"
+                      Margin="5">
+            <StackPanel>
+                <Image Grid.Row="0" 
+                       Margin="5,0" 
+                       Source="{Binding CatLocation}"/>
+                <Button Content="Meow"
+                        Margin="5"
+                        Command="{Binding MeowCommand}"/>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Grid.Column="1"
+                    Grid.Row="1"
+                    Header="Computer Details"
+                    Margin="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0"
+                               Grid.Row="0"
+                               Text="Computer Name:"/>
+                <TextBlock Grid.Column="1"
+                           Grid.Row="0"
+                           Margin="5,0,0,0"
+                           Text="{Binding ComputerName}"/>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>

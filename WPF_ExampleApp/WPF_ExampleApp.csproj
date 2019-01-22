@@ -81,6 +81,7 @@
     <Compile Include="Icons\Graduate.xaml.cs">
       <DependentUpon>Graduate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\MeowModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\PageOneViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />

@@ -16,7 +16,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -25,28 +25,25 @@
         <GroupBox Grid.Column="0"
                       Grid.Row="0"
                       Grid.RowSpan="2"
-                      Header="Data grid of stuff"
+                      Header="Data grid of meows"
                       Margin="5">
-            <DataGrid>
-
+            <DataGrid ItemsSource="{Binding MeowModels}"
+                      AutoGenerateColumns="False"
+                      CanUserReorderColumns="False" 
+                      CanUserResizeColumns="False" 
+                      CanUserSortColumns="True" 
+                      CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Length of meow (seconds)"
+                                        Binding="{Binding TimeToMeowing}"/>
+                    <DataGridTextColumn Header="Cat chosen"
+                                        Binding="{Binding CatNumber}"/>
+                </DataGrid.Columns>
             </DataGrid>
         </GroupBox>
         <GroupBox Grid.Column="1"
-                      Grid.Row="0"
-                      Header="Meow"
-                      Margin="5">
-            <StackPanel>
-                <Image Grid.Row="0" 
-                       Margin="5,0" 
-                       Source="{Binding CatLocation}"/>
-                <Button Content="Meow"
-                        Margin="5"
-                        Command="{Binding MeowCommand}"/>
-            </StackPanel>
-        </GroupBox>
-        <GroupBox Grid.Column="1"
-                    Grid.Row="1"
-                    Header="Computer Details"
+                    Grid.Row="0"
+                    Header="Computer meow Details"
                     Margin="5">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -65,6 +62,19 @@
                            Margin="5,0,0,0"
                            Text="{Binding ComputerName}"/>
             </Grid>
+        </GroupBox>
+        <GroupBox Grid.Column="1"
+                      Grid.Row="1"
+                      Header="Meow"
+                      Margin="5">
+            <StackPanel>
+                <Image Grid.Row="0" 
+                       Margin="5,0" 
+                       Source="{Binding CatLocation}"/>
+                <Button Content="Meow"
+                        Margin="5"
+                        Command="{Binding MeowCommand}"/>
+            </StackPanel>
         </GroupBox>
     </Grid>
 </UserControl>

@@ -15,9 +15,11 @@
         d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <GroupBox Header="Woof" Margin="5">
-            <TextBlock Text="Nothing here right now... Come back later!"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center"/>
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <icons:Graduate/>
+                <TextBlock Text="Nothing here right now... Come back later!"/>
+            </StackPanel>
         </GroupBox>
     </Grid>
 </UserControl>

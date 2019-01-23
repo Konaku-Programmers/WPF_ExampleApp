@@ -26,6 +26,7 @@ namespace WPF_ExampleApp.ViewModel
         private double _timeToMeowing;
         private ObservableCollection<MeowModel> _meowModels;
         private Timer _meowTimer;
+        private Random _randomNumber;
 
         #endregion
 
@@ -35,15 +36,18 @@ namespace WPF_ExampleApp.ViewModel
 
             MeowModels = new ObservableCollection<MeowModel>();
             _meowTimer = new Timer(1000);
+            _randomNumber = new Random();
 
             _meowTimer.Elapsed += new ElapsedEventHandler(meowTimer_Elapsed);
 
             MeowCommand = new RelayCommand(Meow);
+            RandomNumberCommand = new RelayCommand<object>(RandomNumberGenerate);
         }
 
         #region Commands
 
         public RelayCommand MeowCommand { get; private set; }
+        public RelayCommand<object> RandomNumberCommand { get; private set; }
 
         #endregion
 
@@ -79,10 +83,6 @@ namespace WPF_ExampleApp.ViewModel
         {
             int catNumber = 1;
 
-            _timeToMeowing = 0;
-
-            _meowTimer.Start();
-
             MessageDialogResult dialogResult = await _dialogService.ShowMessageAsync(this, "Meow?", "Meow me-ooow mew, meow?",
                                                MessageDialogStyle.AffirmativeAndNegative,
                                                new MetroDialogSettings() { NegativeButtonText = "Meow...", AffirmativeButtonText = "Meow!" });
@@ -101,8 +101,23 @@ namespace WPF_ExampleApp.ViewModel
                 TimeToMeowing = _timeToMeowing,
                 CatNumber = catNumber
             });
+
+            _timeToMeowing = 0;
+
+            _meowTimer.Start();
         }
-        
+
+        private void RandomNumberGenerate(object rowItem)
+        {
+            MeowModel meowModel = rowItem as MeowModel;
+
+            meowModel.RandomNumber = _randomNumber.Next(0, 100);
+        }
+
+        #endregion
+
+        #region Events
+
         private void meowTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             _timeToMeowing++;

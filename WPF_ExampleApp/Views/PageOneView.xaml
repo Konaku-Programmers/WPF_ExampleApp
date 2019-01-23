@@ -38,6 +38,18 @@
                                         Binding="{Binding TimeToMeowing}"/>
                     <DataGridTextColumn Header="Cat chosen"
                                         Binding="{Binding CatNumber}"/>
+                    <DataGridTextColumn Header="Random Number"
+                                        Binding="{Binding RandomNumber}"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="New Number" 
+                                        Margin="0,5,0,0"
+                                        Command="{Binding Path=DataContext.RandomNumberCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"
+                                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=DataContext}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </GroupBox>

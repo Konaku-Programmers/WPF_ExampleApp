@@ -13,6 +13,7 @@ namespace WPF_ExampleApp.Models
     {
         private double _timeToMeowing;
         private int _catNumber;
+        private int _randomNumber;
 
         public double TimeToMeowing
         {
@@ -24,6 +25,15 @@ namespace WPF_ExampleApp.Models
         {
             get { return _catNumber; }
             set { Set("CatNumber", ref _catNumber, value); }
+        }
+
+        /// <summary>
+        /// Using this to show how ObservableObjects can be useful.
+        /// </summary>
+        public int RandomNumber
+        {
+            get { return _randomNumber; }
+            set { Set("RandomNumber", ref _randomNumber, value); }
         }
     }
 }

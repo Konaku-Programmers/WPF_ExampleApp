@@ -79,10 +79,13 @@
     <Compile Include="DesignTimeViewModels\MainViewModelDesign.cs" />
     <Compile Include="DesignTimeViewModels\PageTwoViewModelDesign.cs" />
     <Compile Include="DesignTimeViewModels\PageOneViewModelDesign.cs" />
+    <Compile Include="Enums\AnimalsEnum.cs" />
+    <Compile Include="Events\AnimalCallEventArgs.cs" />
     <Compile Include="Icons\Graduate.xaml.cs">
       <DependentUpon>Graduate.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\MeowModel.cs" />
+    <Compile Include="Services\AnimalSoundService.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\PageTwoViewModel.cs" />
     <Compile Include="ViewModel\PageOneViewModel.cs" />
@@ -150,6 +153,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\cat1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MockServices\" />
+    <Folder Include="ServiceInterfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

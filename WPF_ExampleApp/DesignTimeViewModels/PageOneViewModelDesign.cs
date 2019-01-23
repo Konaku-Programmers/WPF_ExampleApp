@@ -14,15 +14,16 @@ namespace WPF_ExampleApp.DesignTimeViewModels
 
         #region Fields
 
-        public string CatLocation;
-        public string ComputerName;
-        public ObservableCollection<MeowModel> MeowModels;
+        public string CatLocation { get; set; }
+        public string ComputerName { get; set; }
+        public ObservableCollection<MeowModel> MeowModels { get; set; }
 
         #endregion
 
         public PageOneViewModelDesign()
         {
             ComputerName = "Beep-Boop-PC";
+            CatLocation = "/WPF_ExampleApp;component/Images/cat1.jpg";
 
             MeowModels = new ObservableCollection<MeowModel>();
 

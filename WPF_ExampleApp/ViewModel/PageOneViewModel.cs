@@ -31,7 +31,6 @@ namespace WPF_ExampleApp.ViewModel
         private ObservableCollection<MeowModel> _meowModels;
         private Timer _meowTimer;
         private Random _randomNumber;
-        private AnimalsEnum _animalType;
 
         #endregion
 

@@ -27,31 +27,35 @@
                       Grid.RowSpan="2"
                       Header="Data grid of meows"
                       Margin="5">
-            <DataGrid ItemsSource="{Binding MeowModels}"
-                      AutoGenerateColumns="False"
-                      CanUserReorderColumns="False" 
-                      CanUserResizeColumns="False" 
-                      CanUserSortColumns="True" 
-                      CanUserAddRows="False">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Length of meow (seconds)"
-                                        Binding="{Binding TimeToMeowing}"/>
-                    <DataGridTextColumn Header="Cat chosen"
-                                        Binding="{Binding CatNumber}"/>
-                    <DataGridTextColumn Header="Random Number"
-                                        Binding="{Binding RandomNumber}"/>
-                    <DataGridTemplateColumn>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="New Number" 
-                                        Margin="0,5,0,0"
-                                        Command="{Binding Path=DataContext.RandomNumberCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"
-                                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=DataContext}"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
+            <StackPanel>
+                <TextBlock Text="Press meow to generate data for the table!"
+                           HorizontalAlignment="Center"/>
+                <DataGrid ItemsSource="{Binding MeowModels}"
+                          AutoGenerateColumns="False"
+                          CanUserReorderColumns="False" 
+                          CanUserResizeColumns="False" 
+                          CanUserSortColumns="True" 
+                          CanUserAddRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Length of meow (seconds)"
+                                            Binding="{Binding TimeToMeowing}"/>
+                        <DataGridTextColumn Header="Cat chosen"
+                                            Binding="{Binding CatNumber}"/>
+                        <DataGridTextColumn Header="Random Number"
+                                            Binding="{Binding RandomNumber}"/>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="New Number" 
+                                            Margin="0,5,0,0"
+                                            Command="{Binding Path=DataContext.RandomNumberCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"
+                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=DataContext}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
         </GroupBox>
         <GroupBox Grid.Column="1"
                     Grid.Row="0"

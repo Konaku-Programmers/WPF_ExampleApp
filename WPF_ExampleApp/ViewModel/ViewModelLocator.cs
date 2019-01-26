@@ -16,6 +16,9 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using CommonServiceLocator;
 using MahApps.Metro.Controls.Dialogs;
+using WPF_ExampleApp.ServiceInterfaces;
+using WPF_ExampleApp.MockServices;
+using WPF_ExampleApp.Services;
 
 namespace WPF_ExampleApp.ViewModel
 {
@@ -30,6 +33,17 @@ namespace WPF_ExampleApp.ViewModel
         /// </summary>
         public ViewModelLocator()
         {
+            bool mockAnimalSound = false;
+
+            if (mockAnimalSound)
+            {
+                SimpleIoc.Default.Register<IAnimalSoundService, AnimalSoundServiceMock>();
+            }
+            else
+            {
+                SimpleIoc.Default.Register<IAnimalSoundService, AnimalSoundService>();
+            }
+
             if (ViewModelBase.IsInDesignModeStatic)
             {
                 return;

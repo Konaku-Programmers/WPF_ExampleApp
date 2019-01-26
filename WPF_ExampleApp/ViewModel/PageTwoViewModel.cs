@@ -8,7 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using WPF_ExampleApp.Events;
 using WPF_ExampleApp.Models;
+using WPF_ExampleApp.ServiceInterfaces;
 
 namespace WPF_ExampleApp.ViewModel
 {
@@ -16,17 +18,21 @@ namespace WPF_ExampleApp.ViewModel
     {
         #region Service Fields
 
-        IDialogCoordinator _dialogService;
+        private IAnimalSoundService _animalSoundService;
 
         #endregion
 
         #region Fields
 
+        private string _animalType;
+
         #endregion
 
-        public PageTwoViewModel(IDialogCoordinator dialogService)
+        public PageTwoViewModel(IAnimalSoundService animalSoundService)
         {
-            _dialogService = dialogService;
+            _animalSoundService = animalSoundService;
+
+            _animalSoundService.AnimalCalling += _animalSoundService_AnimalCalling;
         }
 
         #region Commands
@@ -35,9 +41,24 @@ namespace WPF_ExampleApp.ViewModel
 
         #region Properties
 
+        public string AnimalType
+        {
+            get { return _animalType; }
+            set { _animalType = value; RaisePropertyChanged(() => AnimalType); }
+        }
+
         #endregion
 
         #region Methods
+
+        #endregion
+
+        #region Events
+
+        private void _animalSoundService_AnimalCalling(object sender, AnimalCallEventArgs e)
+        {
+            AnimalType = e.AnimalCall.ToString();
+        }
 
         #endregion
     }

@@ -8,7 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using WPF_ExampleApp.Enums;
+using WPF_ExampleApp.Events;
 using WPF_ExampleApp.Models;
+using WPF_ExampleApp.ServiceInterfaces;
 
 namespace WPF_ExampleApp.ViewModel
 {
@@ -16,7 +19,8 @@ namespace WPF_ExampleApp.ViewModel
     {
         #region Service Fields
 
-        IDialogCoordinator _dialogService;
+        private IDialogCoordinator _dialogService;
+        private IAnimalSoundService _animalSoundService;
 
         #endregion
 
@@ -27,18 +31,20 @@ namespace WPF_ExampleApp.ViewModel
         private ObservableCollection<MeowModel> _meowModels;
         private Timer _meowTimer;
         private Random _randomNumber;
+        private AnimalsEnum _animalType;
 
         #endregion
 
-        public PageOneViewModel(IDialogCoordinator dialogService)
+        public PageOneViewModel(IDialogCoordinator dialogService, IAnimalSoundService animalSoundService)
         {
             _dialogService = dialogService;
+            _animalSoundService = animalSoundService;
 
             MeowModels = new ObservableCollection<MeowModel>();
             _meowTimer = new Timer(1000);
             _randomNumber = new Random();
 
-            _meowTimer.Elapsed += new ElapsedEventHandler(meowTimer_Elapsed);
+            _meowTimer.Elapsed += new ElapsedEventHandler(_meowTimer_Elapsed);
 
             MeowCommand = new RelayCommand(Meow);
             RandomNumberCommand = new RelayCommand<object>(RandomNumberGenerate);
@@ -85,7 +91,7 @@ namespace WPF_ExampleApp.ViewModel
 
             MessageDialogResult dialogResult = await _dialogService.ShowMessageAsync(this, "Meow?", "Meow me-ooow mew, meow?",
                                                MessageDialogStyle.AffirmativeAndNegative,
-                                               new MetroDialogSettings() { NegativeButtonText = "Meow...", AffirmativeButtonText = "Meow!" });
+                                               new MetroDialogSettings() { NegativeButtonText = $"{_animalSoundService.MakeAnimalSound()}...", AffirmativeButtonText = $"{_animalSoundService.MakeAnimalSound()}!" });
 
             if (dialogResult == MessageDialogResult.Negative)
             {
@@ -111,14 +117,16 @@ namespace WPF_ExampleApp.ViewModel
         {
             MeowModel meowModel = rowItem as MeowModel;
 
-            meowModel.RandomNumber = _randomNumber.Next(0, 100);
+            meowModel.RandomNumber = _randomNumber.Next(0, 5);
+
+            _animalSoundService.AnimalTypeCalling(meowModel.RandomNumber);
         }
 
         #endregion
 
         #region Events
 
-        private void meowTimer_Elapsed(object sender, ElapsedEventArgs e)
+        private void _meowTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             _timeToMeowing++;
         }

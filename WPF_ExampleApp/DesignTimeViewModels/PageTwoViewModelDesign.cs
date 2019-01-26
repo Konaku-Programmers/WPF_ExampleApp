@@ -14,12 +14,13 @@ namespace WPF_ExampleApp.DesignTimeViewModels
 
         #region Fields
 
-
+        public string AnimalType { get; set; }
 
         #endregion
 
         public PageTwoViewModelDesign()
         {
+            AnimalType = "Dog";
         }
 
         #region Methods
